@@ -1,5 +1,5 @@
 {
-  "name": "qingkong-native",
+  "name": "",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -19,6 +19,7 @@
     "ahooks": "^3.4.1",
     "antd": "^4.21.2",
     "axios": "^0.27.2",
+    "classnames": "^2.3.1",
     "codemirror": "^5.65.4",
     "diff-match-patch": "^1.0.5",
     "immer": "^9.0.15",

@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*先尝试用一个文件夹*/
+/*每个组件用.collections的命名空间*/
+.draggable-layout{
+  display: flex;
+  /*width: 100%;*/
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.draggable-layout .draggable-line{
+  cursor: ew-resize;
+  padding: 0 10px;
+  /*background-color: salmon;*/
+}
+
+.draggable-layout .draggable-line>div{
+  width: 1px;
+  height: 500px;
+  background-color: #eee;
+}
+
+
+.draggable-layout .draggable-line:hover>div{
+  background-color: #1890ff;
+}
+
+.draggable-layout .right{
+  width: calc(25% - 5px);
+}
+
+.draggable-layout .left{
+  width: calc(75% - 5px);
+}
+
+
+/*.collection*/
+
+.collection{
+  display: flex;
+}
+
+.collection>.right{
+  flex: 1;
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+/*.main-box*/
+
+.main-box>.main-body{
+  display: flex;
+}
+.main-box>.main-body>.page-view{
+  flex: 1;
+}
+
+
+/*.main-body .ant-menu-item{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  height: 100px !important;*/
+/*}*/
+
+/*.http*/
+
+.http .top{
+  display: flex;
 }

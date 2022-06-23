@@ -5,7 +5,7 @@ import { useStore } from "../store";
 const { Option } = Select;
 const Header = () => {
   const [workspaceId, setWorkspaceId] = useState("");
-  const workspaces = useStore((state) => state.workspaces);
+  const workspaces = useStore<any>((state) => state.workspaces);
   const currentWorkspaceId = useStore((state) => state.currentWorkspaceId);
   const setCurrentWorkspaceId = useStore(
     (state) => state.setCurrentWorkspaceId,

@@ -28,5 +28,7 @@ export const useStore = create<BaseState>(
     setWorkspaces: (workspaces: any) => {
       return set((state) => ({ workspaces: workspaces }));
     },
+    //  从这里开发
+    //   layout
   }),
 );
