@@ -1,4 +1,4 @@
-.draggable-layout{display:flex}.draggable-layout .draggable-line{cursor:ew-resize;padding:0 10px}.draggable-layout .draggable-line>div{width:1px;height:500px;background-color:#eee}.draggable-layout .draggable-line:hover>div{background-color:#1890ff}.draggable-layout .right{width:calc(25% - 5px)}.draggable-layout .left{width:calc(75% - 5px)}.collection{display:flex}.collection>.right{flex:1;margin-left:10px;padding-top:10px}.main-box>.main-body{display:flex}.main-box>.main-body>.page-view{flex:1}.http .top{display:flex}/*!
+.draggable-layout{height:100%}.draggable-layout .draggable-line>div{background-color:#eee}.draggable-layout .draggable-line:hover>div{background-color:#1890ff}.collection{display:flex}.collection>.right{flex:1;margin-left:10px;padding-top:10px}.main-box>.main-body{display:flex;height:calc(100vh - 57px)}.main-box>.main-body>.page-view{flex:1}.http .top{display:flex}/*!
  * 
  * antd v4.21.3
  * 
