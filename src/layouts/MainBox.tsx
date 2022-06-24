@@ -3,7 +3,7 @@ import { useMount } from "ahooks";
 import DraggableLayout from "./DraggableLayout";
 import Header from "../components/Header";
 import { Menu, MenuProps } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import {
   ContainerOutlined,
   DesktopOutlined,
@@ -28,11 +28,13 @@ function getItem(
   } as MenuItem;
 }
 const items: MenuItem[] = [
-  getItem("常规", "normal", <PieChartOutlined />),
+  getItem("常规", "rest", <PieChartOutlined />),
   getItem("设置", "setting", <PieChartOutlined />),
 ];
 
 const MainBox = () => {
+  const to = useNavigate();
+  const onClick: MenuProps["onClick"] = (e) => to(`/${e.key}`);
   return <div className={'main-box'}>
     <Header />
     <div className={'main-body'}>
@@ -40,6 +42,7 @@ const MainBox = () => {
         activeKey="normal"
         mode="vertical"
         items={items}
+        onClick={onClick}
       />
       <div className={'page-view'}>
         <Outlet/>

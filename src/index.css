@@ -1,34 +1,8 @@
 /*先尝试用一个文件夹*/
 /*每个组件用.collections的命名空间*/
-.draggable-layout{
-  display: flex;
-  /*width: 100%;*/
-}
-
-.draggable-layout .draggable-line{
-  cursor: ew-resize;
-  padding: 0 10px;
-  /*background-color: salmon;*/
-}
-
-.draggable-layout .draggable-line>div{
-  width: 1px;
-  height: 500px;
-  background-color: #eee;
-}
 
 
-.draggable-layout .draggable-line:hover>div{
-  background-color: #1890ff;
-}
 
-.draggable-layout .right{
-  width: calc(25% - 5px);
-}
-
-.draggable-layout .left{
-  width: calc(75% - 5px);
-}
 
 
 /*.collection*/
@@ -47,6 +21,7 @@
 
 .main-box>.main-body{
   display: flex;
+  height: calc(100vh - 57px);
 }
 .main-box>.main-body>.page-view{
   flex: 1;

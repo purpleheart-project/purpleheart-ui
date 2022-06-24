@@ -1,13 +1,21 @@
-import {Divider, Dropdown, Input, Menu, Select, Tabs} from "antd";
+import {Breadcrumb, Button, Divider, Dropdown, Input, Menu, Select, Tabs} from "antd";
 import React, { useRef, useState } from "react";
 import AnimateAutoHeight from "../AnimateAutoHeight";
-import {CodeOutlined, CopyOutlined, DeleteOutlined, DownOutlined, LinkOutlined, SaveOutlined} from "@ant-design/icons";
+import {
+  CodeOutlined,
+  CopyOutlined,
+  DeleteOutlined,
+  DownOutlined,
+  LinkOutlined,
+  SaveOutlined,
+} from "@ant-design/icons";
 import CodeMirror from "@uiw/react-codemirror";
-import {json} from "@codemirror/lang-json";
-import {javascript} from "@codemirror/lang-javascript";
-import {useImmer} from "use-immer";
-import {v4 as uuidv4} from "uuid";
+import { json } from "@codemirror/lang-json";
+import { javascript } from "@codemirror/lang-javascript";
+import { useImmer } from "use-immer";
+import { v4 as uuidv4 } from "uuid";
 import DraggableLayout from "../../layouts/DraggableLayout";
+import VerticalDraggableLayout from "../../layouts/VerticalDraggableLayout";
 
 const { TabPane } = Tabs;
 
@@ -36,7 +44,7 @@ type ParamsType = {
   value: string | number;
   disabled: boolean;
 };
-const HttpCopy: React.FC<any> = ({}: any) => {
+const HttpCopy: React.FC<any> = ({workAreas}: any) => {
   const [activeKey, setActiveKey] = useState(initialPanes[0].key);
   const [panes, setPanes] = useState(initialPanes);
   const newTabIndex = useRef(0);
@@ -94,18 +102,25 @@ const HttpCopy: React.FC<any> = ({}: any) => {
   };
 
   return (
-    <div style={{padding:'10px'}} className={'http'}>
-      <Tabs type="editable-card" onChange={onChange} activeKey={activeKey} onEdit={onEdit}>
-        {panes.map(pane => (
-          <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
+    <div style={{height:'100%',padding:'10px'}} className={'http'}>
+      <Tabs type="editable-card" onChange={onChange} activeKey={activeKey} onEdit={onEdit} style={{height:'100%'}}>
+        {workAreas.map(pane => (
+          <TabPane tab={pane.title} key={pane.key} closable={pane.closable} style={{minHeight:'500px',borderBottom:'1px solid red'}}>
 
 
+            <Breadcrumb>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <a href="">Application Center</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <a href="">Application List</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>An Application</Breadcrumb.Item>
+            </Breadcrumb>
 
-            <DraggableLayout options={{
-              leftClassName:'test0',
-              rightClassName:"test1"
-            }}>
-              <div className={'test0 left'}>
+            <DraggableLayout dir={'vertical'}>
+              <div>
                 <AnimateAutoHeight>
                   <div className={'top'}>
                     <Select
@@ -113,7 +128,7 @@ const HttpCopy: React.FC<any> = ({}: any) => {
                       options={RequestTypeOptions}
                       onChange={setRequestType}
                     />
-                    <Input value={url} onChange={(e) => setUrl(e.target.value)} />
+                    <Input value={pane.endpoint} onChange={(e) => setUrl(e.target.value)} />
                     <Dropdown.Button
                       type="primary"
                       icon={<DownOutlined />}
@@ -181,10 +196,9 @@ const HttpCopy: React.FC<any> = ({}: any) => {
                     </Dropdown.Button>
                   </div>
                 </AnimateAutoHeight>
-                <Divider />
+                {/*<Divider />*/}
               </div>
-
-              <div className={'test1 right'}>safasf</div>
+              <div>ssdf</div>
             </DraggableLayout>
 
           </TabPane>
