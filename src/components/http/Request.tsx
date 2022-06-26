@@ -122,118 +122,103 @@ const HttpCopy: React.FC<any> = ({ workAreas }: any) => {
 
   return (
       <div style={{height:'100%',padding:'10px'}} className={'http'}>
-        <Tabs type="editable-card" onChange={onChange} activeKey={activeKey} onEdit={onEdit} style={{height:'100%'}}>
-          {workAreas.map(pane => (
-              <TabPane tab={pane.title} key={pane.key} closable={pane.closable} style={{minHeight:'500px',borderBottom:'1px solid red'}}>
+        <Breadcrumb style={{marginBottom:'12px'}}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Application Center</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Application List</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>An Application</Breadcrumb.Item>
+        </Breadcrumb>
 
+        <div>
+          <Space className={'top'} style={{width:'100%'}}>
+            <Select
+                value={requestType}
+                options={RequestTypeOptions}
+                onChange={setRequestType}
+            />
+            <Input value={'pane.endpoint'} style={{width:'100%'}} onChange={(e) => setUrl(e.target.value)} />
+            <Dropdown.Button
+                type="primary"
+                icon={<DownOutlined />}
+                onClick={()=>{}}
+                overlay={
+                  <Menu
+                      items={[
+                        {
+                          key: "1",
+                          label: "导入URL",
+                          icon: <LinkOutlined />,
+                        },
+                        {
+                          key: "2",
+                          label: "显示代码",
+                          icon: <CodeOutlined />,
+                        },
+                        {
+                          key: "3",
+                          label: "全部清除",
+                          icon: <DeleteOutlined />,
+                        },
+                      ]}
+                  />
+                }
+            >
+              发送
+            </Dropdown.Button>
 
-                <Breadcrumb style={{marginBottom:'12px'}}>
-                  <Breadcrumb.Item>Home</Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <a href="">Application Center</a>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <a href="">Application List</a>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>An Application</Breadcrumb.Item>
-                </Breadcrumb>
-
-                <DraggableLayout dir={'vertical'}>
-                  <div>
-                    <div>
-                      <Space className={'top'} style={{width:'100%'}}>
-                        <Select
-                            value={requestType}
-                            options={RequestTypeOptions}
-                            onChange={setRequestType}
-                        />
-                        <Input value={pane.endpoint} style={{width:'100%'}} onChange={(e) => setUrl(e.target.value)} />
-                        <Dropdown.Button
-                            type="primary"
-                            icon={<DownOutlined />}
-                            onClick={()=>{}}
-                            overlay={
-                              <Menu
-                                  items={[
-                                    {
-                                      key: "1",
-                                      label: "导入URL",
-                                      icon: <LinkOutlined />,
-                                    },
-                                    {
-                                      key: "2",
-                                      label: "显示代码",
-                                      icon: <CodeOutlined />,
-                                    },
-                                    {
-                                      key: "3",
-                                      label: "全部清除",
-                                      icon: <DeleteOutlined />,
-                                    },
-                                  ]}
+            <Dropdown.Button
+                icon={<DownOutlined />}
+                overlay={
+                  <Menu
+                      items={[
+                        {
+                          key: "0",
+                          label: (
+                              <Input
+                                  value={requestSavedName}
+                                  onClick={(e) => e.stopPropagation()}
+                                  onChange={(e) => setRequestSavedName(e.target.value)}
                               />
-                            }
-                        >
-                          发送
-                        </Dropdown.Button>
-
-                        <Dropdown.Button
-                            icon={<DownOutlined />}
-                            overlay={
-                              <Menu
-                                  items={[
-                                    {
-                                      key: "0",
-                                      label: (
-                                          <Input
-                                              value={requestSavedName}
-                                              onClick={(e) => e.stopPropagation()}
-                                              onChange={(e) => setRequestSavedName(e.target.value)}
-                                          />
-                                      ),
-                                    },
-                                    {
-                                      key: "1",
-                                      label: "复制链接",
-                                      icon: <CopyOutlined />,
-                                    },
-                                    {
-                                      key: "2",
-                                      label: "View my links",
-                                      icon: <LinkOutlined />,
-                                    },
-                                    {
-                                      key: "3",
-                                      label: "另存为",
-                                      icon: <SaveOutlined />,
-                                    },
-                                  ]}
-                              />
-                            }
-                        >
-                          保存
-                        </Dropdown.Button>
-                      </Space>
-                      <FormHeader update={()=>{}}></FormHeader>
-                      <FormTable
-                          bordered
-                          size="small"
-                          rowKey="id"
-                          pagination={false}
-                          dataSource={[]}
-                          // @ts-ignore
-                          columns={getColumns(setRequestParams)}
-                      />
-                      <Body></Body>
-                    </div>
-                    {/*<Divider />*/}
-                  </div>
-                  <div>ssdf</div>
-                </DraggableLayout>
-
-              </TabPane>
-          ))}
-        </Tabs>
+                          ),
+                        },
+                        {
+                          key: "1",
+                          label: "复制链接",
+                          icon: <CopyOutlined />,
+                        },
+                        {
+                          key: "2",
+                          label: "View my links",
+                          icon: <LinkOutlined />,
+                        },
+                        {
+                          key: "3",
+                          label: "另存为",
+                          icon: <SaveOutlined />,
+                        },
+                      ]}
+                  />
+                }
+            >
+              保存
+            </Dropdown.Button>
+          </Space>
+          <FormHeader update={()=>{}}></FormHeader>
+          <FormTable
+              bordered
+              size="small"
+              rowKey="id"
+              pagination={false}
+              dataSource={[]}
+              // @ts-ignore
+              columns={getColumns(setRequestParams)}
+          />
+          {/*<Body></Body>*/}
+        </div>
       </div>
   );
 };

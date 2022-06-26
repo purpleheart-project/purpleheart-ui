@@ -30,7 +30,7 @@ const Rest = () => {
   return (
     <DraggableLayout dir={'horizontal'}>
 
-      <div>
+      <DraggableLayout dir={'vertical'}>
         {/*<http workAreas={workAreas}/>*/}
         <HttpRequest workAreas={workAreas}></HttpRequest>
         <Tabs defaultActiveKey="1" onChange={()=>{}}>
@@ -44,7 +44,7 @@ const Rest = () => {
             Content of Tab Pane 3
           </TabPane>
         </Tabs>
-      </div>
+      </DraggableLayout>
 
       <div>
         <Tabs defaultActiveKey="1" onChange={()=>{}} tabPosition={'left'}>
