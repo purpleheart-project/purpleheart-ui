@@ -1,14 +1,8 @@
-/*先尝试用一个文件夹*/
-/*每个组件用.collections的命名空间*/
-
-
-
-
-
 /*.collection*/
 
 .collection{
   display: flex;
+  margin-right: 12px;
 }
 
 .collection>.right{
@@ -17,27 +11,10 @@
   padding-top: 10px;
 }
 
-/*.main-box*/
-
 .main-box>.main-body{
   display: flex;
   height: calc(100vh - 57px);
 }
 .main-box>.main-body>.page-view{
   flex: 1;
-}
-
-
-/*.main-body .ant-menu-item{*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*  height: 100px !important;*/
-/*}*/
-
-/*.http*/
-
-.http .top{
-  display: flex;
 }

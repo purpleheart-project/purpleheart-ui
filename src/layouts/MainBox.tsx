@@ -9,7 +9,7 @@ import {
   DesktopOutlined,
   PieChartOutlined,
 } from "@ant-design/icons";
-import Collection from "../components/Collection";
+import Collection from "../components/collection";
 type MenuItem = Required<MenuProps>["items"][number];
 
 function getItem(

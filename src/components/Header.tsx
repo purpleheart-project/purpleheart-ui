@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Collection from "../components/Collection";
+import Collection from "./collection";
 import { Col, Divider, Row, Select } from "antd";
 import { useStore } from "../store";
 const { Option } = Select;

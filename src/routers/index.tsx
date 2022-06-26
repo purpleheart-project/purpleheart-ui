@@ -1,7 +1,7 @@
 import React from "react";
 import MainBox from "../layouts/MainBox";
-import Rest from "../pages/Rest";
-import Setting from "../pages/Setting";
+import Rest from "../pages/rest";
+import Setting from "../pages/setting";
 
 export default [
   {
