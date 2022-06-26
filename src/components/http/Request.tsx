@@ -121,7 +121,7 @@ const HttpCopy: React.FC<any> = ({ workAreas }: any) => {
   };
 
   return (
-      <div style={{height:'100%',padding:'10px'}} className={'http'}>
+      <div style={{height:'100%',padding:'10px 10px 10px 10px'}} className={'http'}>
         <Breadcrumb style={{marginBottom:'12px'}}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>

@@ -10,6 +10,12 @@ const styleMap: any = {
     secondStyle: {
       width: `calc(25% - 5px)`,
     },
+      weizhi1Style:{
+        left:'0',width:'calc(100% + 10px)'
+    },
+      weizhi2Style:{
+          left:'-10px',width:'calc(100% + 10px)'
+      }
   },
   vertical: {
     firstStyle: {
@@ -18,10 +24,17 @@ const styleMap: any = {
     secondStyle: {
       height: `calc(25% - 5px)`,
     },
+      weizhi1Style:{
+          top:'0',height:'calc(100% + 10px)'
+      },
+      weizhi2Style:{
+          top:'-10px',height:'calc(100% + 10px)'
+      }
   },
 };
 
 // 原理 通过拖动draggable-line，计算偏移量
+// 注意：两个元素内部都经过了处理，包在了一个wrap内，位置做了偏移，为的是可以让线可以重合
 const DraggableLayout = (props: any) => {
   const draggableLineRef = useRef(null);
   const draggableLayoutRef = useRef(null);
@@ -110,7 +123,11 @@ const DraggableLayout = (props: any) => {
 
   return <div ref={draggableLayoutRef} className={'draggable-layout'} style={{display: dir==='horizontal'?'flex':'block'}}>
         <div ref={firstRef} style={styleMap[dir].firstStyle}>
-            {props.children[0]}
+
+            <div className={'wrapsss'}
+                 style={styleMap[dir].weizhi1Style}>
+                {props.children[0]}
+            </div>
         </div>
 
         <div
@@ -129,7 +146,11 @@ const DraggableLayout = (props: any) => {
         </div>
 
         <div ref={secondRef} style={styleMap[dir].secondStyle}>
-            {props.children[1]}
+            <div className={'wrapsss'}
+                 style={styleMap[dir].weizhi2Style}>
+                {props.children[1]}
+            </div>
+
         </div>
 
     </div>;

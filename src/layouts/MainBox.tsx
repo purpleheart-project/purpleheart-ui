@@ -38,10 +38,17 @@ const items: MenuItem[] = [
 const MainBox = () => {
   const to = useNavigate();
   const onClick: MenuProps["onClick"] = (e) => to(`/${e.key}`);
+  const [mainBodyHeight,setMainBodyHeight] = useState(0)
+  useMount(()=>{
+    // @ts-ignore
+    const s = document.querySelector('.app-header').offsetHeight
+    // 加上padding
+    setMainBodyHeight(s+1)
+  })
   return <div className={'main-box'}>
     <AppHeader />
     <Divider style={{margin:'0'}}/>
-    <div className={'main-body'}>
+    <div className={'main-body'} style={{height:`calc(100vh - ${mainBodyHeight}px)`}}>
       <Menu
         activeKey="normal"
         mode="vertical"

@@ -71,21 +71,28 @@ const Collection = () => {
   };
   return <div className={'collection'}>
 
-      <div></div>
-      <div className={'right'}> <Input placeholder={'搜索'}/>
-        <Tabs defaultActiveKey="2" onChange={()=>{}}>
+
+      <div className={'right'}>
+        <div style={{padding:'12px'}}>
+          <Input placeholder={'搜索'} />
+        </div>
+
+        <Tabs defaultActiveKey="2" onChange={()=>{}} tabBarStyle={{padding:'0 12px'}}>
           <TabPane tab="我的集合" key="2">
-            <Select defaultValue="lucy" style={{ width: '100%' }} onChange={()=>{}}>
-              <Option value="jack">Jack</Option>
-              <Option value="lucy">Lucy</Option>
-              <Option value="disabled" disabled>
-                Disabled
-              </Option>
-              <Option value="Yiminghe">yiminghe</Option>
-            </Select>
+            <div style={{padding:'0 12px'}}>
+              <Select defaultValue="lucy" style={{ width: '100%' }} onChange={()=>{}}>
+                <Option value="jack">Jack</Option>
+                <Option value="lucy">Lucy</Option>
+                <Option value="disabled" disabled>
+                  Disabled
+                </Option>
+                <Option value="Yiminghe">yiminghe</Option>
+              </Select>
+            </div>
+
             <Divider style={{margin:'12px 0'}}/>
             {/*<Tag>asfasfas</Tag>*/}
-            <Space style={{display:'flex',justifyContent:'space-between'}}>
+            <Space style={{display:'flex',justifyContent:'space-between',padding:'0 12px'}}>
               <a>+新增</a>
               <Space>
                 <a>
@@ -101,12 +108,13 @@ const Collection = () => {
             </Space>
             <Divider style={{margin:'12px 0'}}/>
             <Tree
+                style={{padding:'0 12px'}}
                 showLine={true}
                 onSelect={onSelect}
                 onExpand={onExpand}
                 treeData={treeData}
             />
-          </TabPane>
+          </TabPane >
           <TabPane tab="团队集合" key="1">团队集合</TabPane>
         </Tabs></div>
 

@@ -2,18 +2,19 @@
 
 .collection{
   display: flex;
-  margin-right: 12px;
+  /*height: 100%;*/
+  /*margin-right: 12px;*/
 }
 
 .collection>.right{
   flex: 1;
-  margin-left: 10px;
-  padding-top: 10px;
+  /*margin-left: 10px;*/
+  /*padding-top: 10px;*/
 }
 
 .main-box>.main-body{
   display: flex;
-  height: calc(100vh - 57px);
+  /*height: calc(100vh - 57px);*/
 }
 .main-box>.main-body>.page-view{
   flex: 1;

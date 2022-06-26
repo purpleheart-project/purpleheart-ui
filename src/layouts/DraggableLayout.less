@@ -1,8 +1,16 @@
 .draggable-layout{
   //height: 500px;
   height: 100%;
+  overflow: hidden;
 }
 
+.draggable-layout>div{
+  position: relative;
+}
+.draggable-layout .draggable-line{
+  position: relative;
+  z-index: 1000;
+}
 .draggable-layout .draggable-line>div{
   background-color: #eee;
 }
@@ -11,3 +19,8 @@
   background-color: #1890ff;
 }
 
+.wrapsss{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
