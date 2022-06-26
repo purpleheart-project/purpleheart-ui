@@ -78,8 +78,15 @@ const DraggableLayout = (props: any) => {
                   )
                 ) * 100;
 
-                firstDom.style.width = `calc(${baifenbi1}% - 5px)`;
-                secondDom.style.width = `calc(${baifenbi2}% - 5px)`;
+
+
+                if (baifenbi1 <=25 ||baifenbi1>=75 ){
+                    // document.onmousemove = null;
+                } else {
+                    firstDom.style.width = `calc(${baifenbi1}% - 5px)`;
+                    secondDom.style.width = `calc(${baifenbi2}% - 5px)`;
+                }
+
                 break;
 
               case "vertical":
@@ -100,8 +107,13 @@ const DraggableLayout = (props: any) => {
                   )
                 ) * 100;
 
-                firstDom.style.height = `calc(${baifenbi4}% - 5px)`;
-                secondDom.style.height = `calc(${baifenbi3}% - 5px)`;
+
+                  if (baifenbi4 <=25 ||baifenbi4>=75 ){
+                      // document.onmousemove = null;
+                  } else {
+                      firstDom.style.height = `calc(${baifenbi4}% - 5px)`;
+                      secondDom.style.height = `calc(${baifenbi3}% - 5px)`;
+                  }
                 break;
 
               default:

@@ -19,3 +19,8 @@
 .main-box>.main-body>.page-view{
   flex: 1;
 }
+
+
+.res.ant-tabs-top>.ant-tabs-nav:before{
+  border-bottom: red;
+}

@@ -33,9 +33,9 @@ const Rest = () => {
       <DraggableLayout dir={'vertical'}>
         {/*<http workAreas={workAreas}/>*/}
         <HttpRequest workAreas={workAreas}></HttpRequest>
-        <Tabs defaultActiveKey="1" tabBarStyle={{padding:'0 12px'}} onChange={()=>{}}>
+        <Tabs  className={'res'} defaultActiveKey="1" tabBarStyle={{padding:'0 12px',borderBottom:'1px solid white'}} style={{border:'none'}} onChange={()=>{}}>
           <TabPane tab="Tab 1" key="1">
-            Content of Tab Pane 1
+1
           </TabPane>
           <TabPane tab="Tab 2" key="2">
             Content of Tab Pane 2
