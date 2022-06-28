@@ -27,6 +27,7 @@ import DraggableLayout from "../../layouts/DraggableLayout";
 import FormHeader from "./FormHeader";
 import FormTable, {getColumns} from "./FormTable";
 import Body from "./Body";
+import {useHttpStore} from "../../store/http";
 export type KeyValueType = {
   id: string;
   key: string;
@@ -63,10 +64,12 @@ type ParamsType = {
   value: string | number;
   disabled: boolean;
 };
-const HttpCopy: React.FC<any> = ({ workAreas }: any) => {
+const HttpCopy: React.FC<any> = ({ pane }: any) => {
   const [activeKey, setActiveKey] = useState(initialPanes[0].key);
   const [panes, setPanes] = useState(initialPanes);
   const newTabIndex = useRef(0);
+  const httpPanes = useHttpStore((state)=>state.httpPanes)
+  const setHttpPanes = useHttpStore((state)=>state.setHttpPanes)
 
   const [requestType, setRequestType] = useState("GET");
   const [requestSavedName, setRequestSavedName] = useState("Untitled request");
@@ -134,13 +137,23 @@ const HttpCopy: React.FC<any> = ({ workAreas }: any) => {
         </Breadcrumb>
 
         <div>
+          <p>{JSON.stringify(pane)}</p>
           <Space className={'top'} style={{width:'100%'}}>
             <Select
                 value={requestType}
                 options={RequestTypeOptions}
                 onChange={setRequestType}
             />
-            <Input value={'pane.endpoint'} style={{width:'100%'}} onChange={(e) => setUrl(e.target.value)} />
+            <Input value={pane.form.url} style={{width:'100%'}} onChange={(e) => {
+
+              let newPanes = JSON.parse(JSON.stringify(httpPanes))
+              console.log(newPanes,'newPanes')
+              const i = newPanes.findIndex(item=>item.key ===pane.key)
+              newPanes[i].form.url = e.target.value
+              newPanes[i].isE = true
+              setHttpPanes(newPanes)
+
+            }} />
             <Dropdown.Button
                 type="primary"
                 icon={<DownOutlined />}
@@ -207,17 +220,6 @@ const HttpCopy: React.FC<any> = ({ workAreas }: any) => {
               保存
             </Dropdown.Button>
           </Space>
-          <FormHeader update={()=>{}}></FormHeader>
-          <FormTable
-              bordered
-              size="small"
-              rowKey="id"
-              pagination={false}
-              dataSource={[]}
-              // @ts-ignore
-              columns={getColumns(setRequestParams)}
-          />
-          {/*<Body></Body>*/}
         </div>
       </div>
   );

@@ -24,3 +24,11 @@
 .res.ant-tabs-top>.ant-tabs-nav:before{
   border-bottom: red;
 }
+
+
+
+.badge-is-edit{
+  transform: translateX(-40px);
+  display: inline-block;
+  width: 0;
+}

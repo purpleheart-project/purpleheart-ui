@@ -11,6 +11,8 @@ import {
   PieChartOutlined,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
+import {useHttpStore} from "../../store/http";
+import {set} from "immer/dist/utils/common";
 
 const { Option } = Select;
 
@@ -62,12 +64,56 @@ const items: MenuItem[] = [
 ];
 
 const Collection = () => {
+  const httpPanes = useHttpStore((state)=>state.httpPanes)
+  const setHttpPanes = useHttpStore((state)=>state.setHttpPanes)
+  const setHttpActiveKey = useHttpStore((state)=>state.setHttpActiveKey)
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-    console.log('Trigger Select', keys, info);
+    const newActiveKey = keys[0];
+    if (newActiveKey){
+      //只有一个未编辑过的和有团队的
+      const s = httpPanes.find(i=>{return i.team !==-1 && !i.isE})
+      if (s){
+        let newPanes = JSON.parse(JSON.stringify(httpPanes))
+        const i = newPanes.findIndex(item=>item.team !==-1&& !item.isE)
+        newPanes[i] = {
+          title: 'New Tab',
+          content: 'Content of new Tab',
+          key: newActiveKey,
+          form:{
+            url:'123'
+          },
+          team:0,
+          isE:false
+        }
+        console.log('asfas')
+        setHttpPanes(newPanes)
+        setHttpActiveKey(newActiveKey)
+      } else {
+        const chazhao = httpPanes.find(i=>i.key === newActiveKey)
+
+        if (chazhao){
+          setHttpActiveKey(newActiveKey)
+        } else {
+          console.log(httpPanes,'httpPanes')
+            const newPanes = [...httpPanes];
+            newPanes.push({
+              title: 'New Tab',
+              content: 'Content of new Tab',
+              key: newActiveKey,
+              form:{
+                url:'123'
+              },
+              team:0
+            });
+            setHttpPanes(newPanes);
+            setHttpActiveKey(newActiveKey);
+        }
+      }
+    }
   };
 
   const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
-    console.log('Trigger Expand', keys, info);
+    // console.log('Trigger Expand', keys, info);
   };
   return <div className={'collection'}>
 

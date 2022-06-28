@@ -8,7 +8,7 @@ const AppHeader = () => {
   return <div className={'app-header'}>
       <div className={'left'}>
           <a className={'app-name'} onClick={()=>{to('/')}}>
-              PURPLEHEART
+              AREX
           </a>
           <AppGitHubStarButton></AppGitHubStarButton>
       </div>
