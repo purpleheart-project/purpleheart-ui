@@ -60,7 +60,7 @@ const Collection = () => {
   const setHttpActiveKey = useHttpStore((state) => state.setHttpActiveKey);
   const onSelect: DirectoryTreeProps["onSelect"] = (keys, info) => {
     const newActiveKey = keys[0];
-    console.log({ newActiveKey });
+    // console.log({ newActiveKey });
     if (newActiveKey) {
       //只有一个未编辑过的和有团队的
       const s = httpPanes.find((i) => {

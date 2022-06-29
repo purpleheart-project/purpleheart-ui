@@ -17,5 +17,7 @@ export const useHttpStore = create<Http>(
       console.log(httpActiveKey);
       return set(() => ({ httpActiveKey }));
     },
+      collections:[],
+      setCollectionActiveKey: "1"
   }),
 );
