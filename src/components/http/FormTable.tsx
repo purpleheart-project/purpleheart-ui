@@ -9,9 +9,7 @@ import { ColumnsType } from "antd/es/table";
 import { useTranslation } from "react-i18next";
 import { Updater } from "use-immer";
 
-interface KeyValueType {
-
-}
+interface KeyValueType {}
 
 const FormTable = styled(Table)<TableProps<KeyValueType>>`
   .ant-table-thead {
@@ -22,20 +20,20 @@ const FormTable = styled(Table)<TableProps<KeyValueType>>`
   }
 `;
 
-export const getColumns = (
-  update: Updater<KeyValueType[]>
-): ColumnsType<KeyValueType> => {
+export const getColumns = (update: Updater<KeyValueType[]>): ColumnsType<
+  KeyValueType
+> => {
   const { t } = useTranslation("common");
   const handleChange = (i: number, attr: "key" | "value", value: string) => {
     update((params) => {
       params[i][attr] = value;
-    });
+    },);
   };
 
   const handleDisable = (i: number) => {
     update((params) => {
       params[i].active = !params[i].active;
-    });
+    },);
   };
 
   return [

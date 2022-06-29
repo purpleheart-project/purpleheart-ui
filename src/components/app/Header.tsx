@@ -1,10 +1,10 @@
 import AppGitHubStarButton from "./GitHubStarButton";
-import './Header.less'
-import {Avatar, Button, Divider} from "antd";
-import {useLocation, useNavigate, useRoutes} from "react-router-dom";
-import {DownloadOutlined, UserAddOutlined} from "@ant-design/icons";
+import "./Header.less";
+import { Avatar, Button, Divider } from "antd";
+import { useLocation, useNavigate, useRoutes } from "react-router-dom";
+import { DownloadOutlined, UserAddOutlined } from "@ant-design/icons";
 const AppHeader = () => {
-    const to = useNavigate()
+  const to = useNavigate();
   return <div className={'app-header'}>
       <div className={'left'}>
           <a className={'app-name'} onClick={()=>{to('/')}}>
@@ -19,7 +19,7 @@ const AppHeader = () => {
           </Button>
           <Avatar src="https://joeschmoe.io/api/v1/random" size={20} style={{marginRight:'8px'}}/>
       </div>
-  </div>
-}
+  </div>;
+};
 
-export default AppHeader
+export default AppHeader;

@@ -16,7 +16,7 @@ type KeyValueType = {
   key: string;
   value: string;
   active: boolean;
-  disabled:any
+  disabled: any;
 };
 
 export const FormHeaderWrapper = styled.div`
@@ -45,7 +45,7 @@ const FormHeader: FC<{ update: Updater<KeyValueType[]> }> = (props) => {
     };
     props.update((state) => {
       state.push(newValue);
-    });
+    },);
   };
 
   const handleClearAllParams = () => props.update([]);

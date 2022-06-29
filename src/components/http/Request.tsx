@@ -5,7 +5,8 @@ import {
   Dropdown,
   Input,
   Menu,
-  Select, Space,
+  Select,
+  Space,
   Tabs,
 } from "antd";
 import React, { useRef, useState } from "react";
@@ -25,9 +26,9 @@ import { useImmer } from "use-immer";
 import { v4 as uuidv4 } from "uuid";
 import DraggableLayout from "../../layouts/DraggableLayout";
 import FormHeader from "./FormHeader";
-import FormTable, {getColumns} from "./FormTable";
+import FormTable, { getColumns } from "./FormTable";
 import Body from "./Body";
-import {useHttpStore} from "../../store/http";
+import { useHttpStore } from "../../store/http";
 export type KeyValueType = {
   id: string;
   key: string;
@@ -35,7 +36,7 @@ export type KeyValueType = {
   active: boolean;
 };
 
-const setRequestParams = ()=>{}
+const setRequestParams = () => {};
 
 const { TabPane } = Tabs;
 
@@ -68,8 +69,8 @@ const HttpCopy: React.FC<any> = ({ pane }: any) => {
   const [activeKey, setActiveKey] = useState(initialPanes[0].key);
   const [panes, setPanes] = useState(initialPanes);
   const newTabIndex = useRef(0);
-  const httpPanes = useHttpStore((state)=>state.httpPanes)
-  const setHttpPanes = useHttpStore((state)=>state.setHttpPanes)
+  const httpPanes = useHttpStore((state) => state.httpPanes);
+  const setHttpPanes = useHttpStore((state) => state.setHttpPanes);
 
   const [requestType, setRequestType] = useState("GET");
   const [requestSavedName, setRequestSavedName] = useState("Untitled request");
@@ -124,7 +125,7 @@ const HttpCopy: React.FC<any> = ({ pane }: any) => {
   };
 
   return (
-      <div style={{height:'100%',padding:'10px 10px 10px 10px'}} className={'http'}>
+    <div style={{height:'100%',padding:'10px 10px 10px 10px'}} className={'http'}>
         <Breadcrumb style={{marginBottom:'12px'}}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>

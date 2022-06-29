@@ -1,12 +1,12 @@
-import {Badge, Tabs, TabsProps} from "antd";
+import { Badge, Tabs, TabsProps } from "antd";
 
 import Collection from "../components/collection";
 import React, { useRef, useState } from "react";
 import DraggableLayout from "../layouts/DraggableLayout";
 import { useMount } from "ahooks";
 const { TabPane } = Tabs;
-import HttpRequest from '../components/http/Request'
-import {useHttpStore} from "../store/http";
+import HttpRequest from "../components/http/Request";
+import { useHttpStore } from "../store/http";
 const Rest = () => {
   const [workAreas, setWorkAreas] = useState<any>([]);
 
@@ -27,25 +27,24 @@ const Rest = () => {
     ],);
   },);
 
-  const httpPanes = useHttpStore((state)=>state.httpPanes)
-  const httpActiveKey = useHttpStore((state)=>state.httpActiveKey)
-  const setHttpActiveKey = useHttpStore((state)=>state.setHttpActiveKey)
-  const setHttpPanes = useHttpStore((state)=>state.setHttpPanes)
-
+  const httpPanes = useHttpStore((state) => state.httpPanes);
+  const httpActiveKey = useHttpStore((state) => state.httpActiveKey);
+  const setHttpActiveKey = useHttpStore((state) => state.setHttpActiveKey);
+  const setHttpPanes = useHttpStore((state) => state.setHttpPanes);
 
   const add = () => {
     const newActiveKey = `${Math.random()}`;
     const newPanes = [...httpPanes];
     newPanes.push({
-      title: 'New Tab',
-      content: 'Content of new Tab',
+      title: "New Tab",
+      content: "Content of new Tab",
       key: newActiveKey,
-      form:{
-        url:'123'
+      form: {
+        url: "123",
       },
-      team:-1,
-      isE:false
-    });
+      team: -1,
+      isE: false,
+    },);
     setHttpPanes(newPanes);
     setHttpActiveKey(newActiveKey);
   };
@@ -56,27 +55,30 @@ const Rest = () => {
       if (pane.key === targetKey) {
         lastIndex = i - 1;
       }
-    });
-    const newPanes = httpPanes.filter(pane => pane.key !== targetKey);
+    },);
+    const newPanes = httpPanes.filter((pane) => pane.key !== targetKey);
     setHttpPanes(newPanes);
-    setHttpActiveKey('1');
+    setHttpActiveKey("1");
   };
 
-  const onEdit = (targetKey: string, action: 'add' | 'remove') => {
-    if (action === 'add') {
+  const onEdit = (targetKey: string, action: "add" | "remove") => {
+    if (action === "add") {
       add();
     } else {
       remove(targetKey);
     }
   };
 
-  const renderTabBar: TabsProps['renderTabBar'] = (tabBarProps, DefaultTabBar) => (
+  const renderTabBar: TabsProps["renderTabBar"] = (
+    tabBarProps,
+    DefaultTabBar,
+  ) => (
     <DefaultTabBar {...tabBarProps}>
       {node => {
         const {panes, activeKey} = tabBarProps
         // console.log(panes)
         // console.log(httpPanes.find(item=>item.key===node.key).isE)
-        const isE = httpPanes.find(item=>item.key===node.key).isE
+        const isE = httpPanes.find(item=>item.key===node.key)?.isE
 
         // console.log(node.key, {activeKey})
         return (
@@ -90,7 +92,6 @@ const Rest = () => {
       }}
     </DefaultTabBar>
   );
-
 
   // const test = useRef(null);
   return (

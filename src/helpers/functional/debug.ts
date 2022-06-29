@@ -4,6 +4,6 @@
  * @returns The parameter `x` passed to this
  */
 export const trace = <T>(x: T) => {
-  console.log(x)
-  return x
-}
+  console.log(x);
+  return x;
+};

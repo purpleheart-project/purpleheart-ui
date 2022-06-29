@@ -8,7 +8,7 @@ const AppGitHubStarButton = () => {
           data-show-count={true}
           title={'Star Purpleheart'}
           href="https://github.com/purpleheart-project/purpleheart-ui"/>
-  </div>
-}
+  </div>;
+};
 
-export default AppGitHubStarButton
+export default AppGitHubStarButton;

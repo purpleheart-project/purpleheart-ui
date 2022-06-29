@@ -10,12 +10,14 @@ const styleMap: any = {
     secondStyle: {
       width: `calc(25% - 5px)`,
     },
-      weizhi1Style:{
-        left:'0',width:'calc(100% + 10px)'
+    weizhi1Style: {
+      left: "0",
+      width: "calc(100% + 10px)",
     },
-      weizhi2Style:{
-          left:'-10px',width:'calc(100% + 10px)'
-      }
+    weizhi2Style: {
+      left: "-10px",
+      width: "calc(100% + 10px)",
+    },
   },
   vertical: {
     firstStyle: {
@@ -24,12 +26,14 @@ const styleMap: any = {
     secondStyle: {
       height: `calc(25% - 5px)`,
     },
-      weizhi1Style:{
-          top:'0',height:'calc(100% + 10px)'
-      },
-      weizhi2Style:{
-          top:'-10px',height:'calc(100% + 10px)'
-      }
+    weizhi1Style: {
+      top: "0",
+      height: "calc(100% + 10px)",
+    },
+    weizhi2Style: {
+      top: "-10px",
+      height: "calc(100% + 10px)",
+    },
   },
 };
 
@@ -78,13 +82,11 @@ const DraggableLayout = (props: any) => {
                   )
                 ) * 100;
 
-
-
-                if (baifenbi1 <=25 ||baifenbi1>=75 ){
-                    // document.onmousemove = null;
+                if (baifenbi1 <= 25 || baifenbi1 >= 75) {
+                  // document.onmousemove = null;
                 } else {
-                    firstDom.style.width = `calc(${baifenbi1}% - 5px)`;
-                    secondDom.style.width = `calc(${baifenbi2}% - 5px)`;
+                  firstDom.style.width = `calc(${baifenbi1}% - 5px)`;
+                  secondDom.style.width = `calc(${baifenbi2}% - 5px)`;
                 }
 
                 break;
@@ -107,13 +109,12 @@ const DraggableLayout = (props: any) => {
                   )
                 ) * 100;
 
-
-                  if (baifenbi4 <=25 ||baifenbi4>=75 ){
-                      // document.onmousemove = null;
-                  } else {
-                      firstDom.style.height = `calc(${baifenbi4}% - 5px)`;
-                      secondDom.style.height = `calc(${baifenbi3}% - 5px)`;
-                  }
+                if (baifenbi4 <= 25 || baifenbi4 >= 75) {
+                  // document.onmousemove = null;
+                } else {
+                  firstDom.style.height = `calc(${baifenbi4}% - 5px)`;
+                  secondDom.style.height = `calc(${baifenbi3}% - 5px)`;
+                }
                 break;
 
               default:
