@@ -5,6 +5,8 @@ interface Http {
   setHttpPanes: (a: any) => void;
   httpActiveKey: any;
   setHttpActiveKey: (a: any) => void;
+    collections: any;
+    setCollections: (a: any) => void;
 }
 export const useHttpStore = create<Http>(
   (set, get) => ({
@@ -18,6 +20,9 @@ export const useHttpStore = create<Http>(
       return set(() => ({ httpActiveKey }));
     },
       collections:[],
-      setCollectionActiveKey: "1"
+      setCollections: (collections: any) => {
+          return set(() => ({ collections }));
+      },
+      setCollectionActiveKey: "1",
   }),
 );

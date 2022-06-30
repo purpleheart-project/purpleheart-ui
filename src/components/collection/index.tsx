@@ -27,6 +27,8 @@ import {
 import { useHttpStore } from "../../store/http";
 import { useMount } from "ahooks";
 import { CollectionService } from "../../services/CollectionService";
+import {RequestService} from "../../services/RequestService";
+import {arrToTree} from "../../helpers/collection/util";
 const { Option } = Select;
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -56,6 +58,8 @@ const items: MenuItem[] = [
 
 const Collection = () => {
   const httpPanes = useHttpStore((state) => state.httpPanes);
+  const setCollections = useHttpStore((state) => state.setCollections);
+  const collections = useHttpStore((state) => state.collections);
   const setHttpPanes = useHttpStore((state) => state.setHttpPanes);
   const setHttpActiveKey = useHttpStore((state) => state.setHttpActiveKey);
   const onSelect: DirectoryTreeProps["onSelect"] = (keys, info) => {
@@ -69,19 +73,25 @@ const Collection = () => {
       if (s) {
         let newPanes = JSON.parse(JSON.stringify(httpPanes));
         const i = newPanes.findIndex((item) => item.team !== -1 && !item.isE);
-        newPanes[i] =
-          {
-            title: "New Tab",
-            content: "Content of new Tab",
-            key: newActiveKey,
-            form: {
-              url: "123",
-            },
-            team: 0,
-            isE: false,
-          };
-        setHttpPanes(newPanes);
-        setHttpActiveKey(newActiveKey);
+
+        RequestService.retrieveARequest({id:newActiveKey}).then(res=>{
+
+          newPanes[i] =
+              {
+                title: "New Tab",
+                content: "Content of new Tab",
+                key: newActiveKey,
+                form: {
+                  url: res.endpoint,
+                },
+                team: 0,
+                isE: false,
+              };
+          setHttpPanes(newPanes);
+          setHttpActiveKey(newActiveKey);
+        })
+
+
       } else {
         const chazhao = httpPanes.find((i) => i.key === newActiveKey);
 
@@ -132,13 +142,15 @@ const Collection = () => {
           }
         },);
       }
-      setTreeData(bianli(res));
+      setCollections(res)
+      setTreeData(bianli(arrToTree(res)));
     },);
   },);
   return <div className={'collection'}>
       <div className={'right'}>
         <div style={{padding:'12px'}}>
           <Input placeholder={'搜索'} />
+          {JSON.stringify(collections)}
         </div>
 
         <Tabs defaultActiveKey="2" onChange={()=>{}} tabBarStyle={{padding:'0 12px'}}>
